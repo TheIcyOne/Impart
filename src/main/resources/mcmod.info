@@ -1,0 +1,16 @@
+[
+{
+  "modid": "impart",
+  "name": "Impart",
+  "description": "Impart your will upon the world.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["The_Icy_One"],
+  "credits": "Vebyast, for the original idea sparking this post.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
