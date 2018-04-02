@@ -9,10 +9,13 @@ import com.headfishindustries.impart.projection.ProjectionEventHandler;
 import com.headfishindustries.impart.proxy.CommonProxy;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.event.RegistryEvent;
@@ -22,6 +25,7 @@ import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
@@ -65,5 +69,14 @@ public class Impart {
 	@SubscribeEvent
 	public static void regModels(ModelRegistryEvent e){
 		proxy.registerModels();
+	}
+	
+	//Putting this here because otherwise java complains. I don't blame it, really.
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	public static void onRenderGui(RenderHandEvent e){
+		EntityPlayer p = Minecraft.getMinecraft().player;
+		if (TetherExtension.hasTether(p)){
+				GlStateManager.color(1, 1, 1, 0.5f);
+		}
 	}
 }

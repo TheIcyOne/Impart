@@ -8,8 +8,12 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.Vec3d;
+import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 
@@ -60,6 +64,14 @@ public class ProjectionEventHandler {
 		EntityPlayer player = (EntityPlayer) e.getEntity();
 		if (TetherExtension.hasTether(player)){
 			GlStateManager.color(1, 1, 1, 1);
+		}
+	}
+	
+	@SubscribeEvent(priority = EventPriority.LOWEST)
+	public static void onRenderGui(RenderHandEvent e){
+		EntityPlayer p = Minecraft.getMinecraft().player;
+		if (TetherExtension.hasTether(p)){
+				GlStateManager.color(1, 1, 1, 1);
 		}
 	}
 	

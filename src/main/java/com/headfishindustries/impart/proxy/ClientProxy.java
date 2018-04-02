@@ -2,13 +2,12 @@ package com.headfishindustries.impart.proxy;
 
 import com.headfishindustries.impart.Impart;
 import com.headfishindustries.impart.ImpartedItems;
+import com.headfishindustries.impart.entity.EntityPlayerBody;
 import com.headfishindustries.impart.entity.EntityTethering;
 import com.headfishindustries.impart.entity.RenderEntityTethering;
+import com.headfishindustries.impart.entity.RenderPlayerBody;
 import com.headfishindustries.impart.particle.LinkParticle;
-import com.headfishindustries.impart.particle.TetherParticle;
-
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.Barrier;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -34,8 +33,7 @@ public class ClientProxy extends CommonProxy {
 	
 	void registerRenderers(){
 		RenderingRegistry.registerEntityRenderingHandler(EntityTethering.class, RenderEntityTethering::new);
-		
-		
+		RenderingRegistry.registerEntityRenderingHandler(EntityPlayerBody.class, RenderPlayerBody::new);		
 	}
 
 }

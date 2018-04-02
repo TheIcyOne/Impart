@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.headfishindustries.impart.entity.EntityPlayerBody;
 import com.headfishindustries.impart.entity.EntityTethering;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,6 +28,7 @@ public class TetherExtension {
 	private EntityPlayer player;
 	private Vec3d tetherPos;
 	private Vec3d playerPos;
+	private EntityPlayerBody body;
 	
 	private TetherExtension(EntityPlayer p){
 		this.player = p;
@@ -44,6 +46,8 @@ public class TetherExtension {
 	public TetherExtension tether(){
 		tetheredPlayers.add(player);
 		tethers.put(player, this);
+		this.body = new EntityPlayerBody(player.world, player);
+		this.body.setPlayer(player);
 		return this;
 	}
 	/** Returns self because chains are gains. **/
@@ -69,10 +73,15 @@ public class TetherExtension {
 		return this.playerPos;
 	}
 	
+	public EntityPlayerBody getBody(){
+		return this.body;
+	}
+	
 	/** Use this to remove a player from the tethered list.**/
 	public void clearTether(){
 		tetheredPlayers.remove(player);
 		tethers.remove(player);
+		this.body = null;
 	}
 	
 	public static boolean hasTether(EntityPlayer p){

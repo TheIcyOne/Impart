@@ -1,7 +1,9 @@
 package com.headfishindustries.impart.item;
 
 import com.headfishindustries.impart.Impart;
+import com.headfishindustries.impart.LazyMaths;
 import com.headfishindustries.impart.TetherExtension;
+import com.headfishindustries.impart.entity.EntityPlayerBody;
 import com.headfishindustries.impart.entity.EntityTethering;
 import com.headfishindustries.impart.projection.ProjectionEvent;
 import net.minecraft.entity.EntityLivingBase;
@@ -51,7 +53,11 @@ public class ItemTethering extends Item{
 			EntityTethering tether = TetherExtension.playerToEntity.get(player);
 			tether.velocityChanged = true;
 			tether.setDead();
-			TetherExtension.playerToEntity.remove(player);	
+			TetherExtension.playerToEntity.remove(player);
+			
+			EntityPlayerBody body = ex.getBody();
+			body.setDead();
+			
 			ex.clearTether();
 		}
 		}
@@ -81,14 +87,20 @@ public class ItemTethering extends Item{
 				return;
 			}
 			
-			EntityTethering tether = TetherExtension.playerToEntity.get(player);
+				EntityTethering tether = TetherExtension.playerToEntity.get(player);
 
-		
-			
 				TetherExtension proj = TetherExtension.For(player);
 				
 				proj.setPlayerPos(player.getPositionVector()).setTetherPos(tether.getPositionVector().add(new Vec3d(0, 1 - player.getYOffset(), 0)));
 				proj.tether();
+				
+				EntityPlayerBody body = proj.getBody();
+				body.setPlayer(player);
+				body.setPositionAndRotation(player.posX, player.posY, player.posZ, player.rotationYaw, player.rotationPitch);
+				body.setRotationYawHead((float) LazyMaths.angleWithX(tether.getPositionVector().subtract(player.getPositionVector())));
+				body.cameraPitch = (float) LazyMaths.angleWithY(tether.getPositionVector().subtract(player.getPositionVector()));
+				
+				worldIn.spawnEntity(body);
 			
 				tether.setVelocity(0, 0, 0);
 				tether.velocityChanged = true;
@@ -104,12 +116,12 @@ public class ItemTethering extends Item{
         return Integer.MAX_VALUE;
     }
 	
-	  @Override
-	    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
-	        if (oldStack.isEmpty() != newStack.isEmpty()) {
-	            return true;
-	        }
-	        return oldStack.getItem() != newStack.getItem();
+	 @Override
+	 public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+		 if (oldStack.isEmpty() != newStack.isEmpty()) {
+			 return true;
+		 }
+	     return oldStack.getItem() != newStack.getItem();
 	}
 	
 
