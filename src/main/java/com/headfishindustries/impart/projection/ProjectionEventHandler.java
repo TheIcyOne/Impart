@@ -26,26 +26,26 @@ public class ProjectionEventHandler {
 			EntityPlayer p = (EntityPlayer) e.getEntityLiving();
 			if (TetherExtension.hasTether(p)){
 				TetherExtension ex = TetherExtension.For(p);
-					p.capabilities.isFlying = true;
-					if (p.world.getTotalWorldTime() % 20 == 0){
-						for (double i = 0; i*i <= p.getPositionVector().squareDistanceTo(ex.getTetherPos()); i+= 0.8){
-							Vec3d v = ex.getTetherPos().subtract(0, 2.6, 0).subtract(p.getPositionVector().subtract(0, 1 - p.getYOffset(), 0)).normalize().scale(i).add(p.getPositionVector());
-							p.world.spawnParticle(EnumParticleTypes.CRIT, true, v.x, v.y, v.z, 0, 0, 0, 0);
-						}
+				p.capabilities.isFlying = true;
+				if (p.world.getTotalWorldTime() % 20 == 0){
+					for (double i = 0; i*i <= p.getPositionVector().squareDistanceTo(ex.getTetherPos()); i+= 0.8){
+						Vec3d v = ex.getTetherPos().subtract(0, 2.6, 0).subtract(p.getPositionVector().subtract(0, 1 - p.getYOffset(), 0)).normalize().scale(i).add(p.getPositionVector());
+						p.world.spawnParticle(EnumParticleTypes.CRIT, true, v.x, v.y, v.z, 0, 0, 0, 0);
 					}
-					if (p.getPositionVector().squareDistanceTo(ex.getTetherPos()) > ex.getRange() * ex.getRange()){
-//							LinkParticle link = new LinkParticle(p.getEntityWorld(), TetherExtension.playerToEntity.get(p), p);
-//							Minecraft.getMinecraft().effectRenderer.addEffect(link);
+				}
+				if (p.getPositionVector().squareDistanceTo(ex.getTetherPos()) > ex.getRange() * ex.getRange()){
+//					LinkParticle link = new LinkParticle(p.getEntityWorld(), TetherExtension.playerToEntity.get(p), p);
+//					Minecraft.getMinecraft().effectRenderer.addEffect(link);
 							
-							//Classic bit of 3-dimensional elasticity.
-							Vec3d resistance = ex.getTetherPos().subtract(p.getPositionVector()).scale(0.025);
-							p.addVelocity(resistance.x, resistance.y, resistance.z);
+					//Classic bit of 3-dimensional elasticity.
+					Vec3d resistance = ex.getTetherPos().subtract(p.getPositionVector()).scale(0.025);
+					p.addVelocity(resistance.x, resistance.y, resistance.z);
 					}
 					
-				}else{
-					if (!p.capabilities.allowFlying){
-						p.capabilities.isFlying = false;
-					}
+			}else{
+				if (!p.capabilities.allowFlying){
+					p.capabilities.isFlying = false;
+				}
 			}
 		}
 	}

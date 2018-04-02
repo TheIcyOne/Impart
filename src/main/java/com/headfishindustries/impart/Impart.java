@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.headfishindustries.impart.entity.EntityTethering;
+import com.headfishindustries.impart.entity.RenderPlayerBody;
 import com.headfishindustries.impart.item.ItemTethering;
 import com.headfishindustries.impart.projection.ProjectionEventHandler;
 import com.headfishindustries.impart.proxy.CommonProxy;
@@ -50,9 +51,7 @@ public class Impart {
 		MinecraftForge.EVENT_BUS.register(CapItemHandle.class);*/
 		MinecraftForge.EVENT_BUS.register(ProjectionEventHandler.class);
 		MinecraftForge.EVENT_BUS.register(Impart.class);
-		
-		
-		
+
 		proxy.preInit();
 	}
 	
@@ -72,7 +71,7 @@ public class Impart {
 	}
 	
 	//Putting this here because otherwise java complains. I don't blame it, really.
-//	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public static void onRenderGui(RenderHandEvent e){
 		EntityPlayer p = Minecraft.getMinecraft().player;
 		if (TetherExtension.hasTether(p)){
