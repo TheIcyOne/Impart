@@ -58,8 +58,8 @@ public class ItemTethering extends Item{
 			}
 			worldIn.playSound(player, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 1, 0.2f);
 		}else{
-			TetherExtension ex = TetherExtension.For(player);
 			if (!worldIn.isRemote){
+			TetherExtension ex = TetherExtension.For(player);
 			player.setPositionAndUpdate(ex.getPlayerPos().x, ex.getPlayerPos().y, ex.getPlayerPos().z);
 			EntityTethering tether = TetherExtension.playerToEntity.get(player);
 			tether.velocityChanged = true;
@@ -67,8 +67,8 @@ public class ItemTethering extends Item{
 			EntityPlayerBody body = ex.getBody();
 			body.setDead();
 			TetherExtension.playerToEntity.remove(player);
-		}
 			ex.clearTether();
+		}
 			worldIn.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDEREYE_DEATH, SoundCategory.PLAYERS, 1, 1);
 		}
 		
@@ -87,7 +87,7 @@ public class ItemTethering extends Item{
 		int timeElapsed = this.getMaxItemUseDuration(stack) - timeLeft;
 		if (entityLiving instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer) entityLiving;
-
+			if (!worldIn.isRemote){	
 				if (timeElapsed <= 5 || TetherExtension.playerToEntity.get(player) == null){
 					//Let's just avoid accidental uses.
 					if (TetherExtension.playerToEntity.get(player) != null){
@@ -97,7 +97,7 @@ public class ItemTethering extends Item{
 					return;
 				}
 				
-				if (!worldIn.isRemote){	
+				
 				TetherExtension proj = TetherExtension.For(player);
 				proj.tether();
 				EntityTethering tether = TetherExtension.playerToEntity.get(player);

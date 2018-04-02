@@ -3,6 +3,7 @@ package com.headfishindustries.impart;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 import com.headfishindustries.impart.entity.EntityPlayerBody;
 import com.headfishindustries.impart.entity.EntityTethering;
@@ -23,7 +24,7 @@ public class TetherExtension {
 	
 	private static HashMap<EntityPlayer, TetherExtension> tethers = new HashMap<EntityPlayer, TetherExtension>();
 	
-	private static Set<EntityPlayer> tetheredPlayers = new HashSet<EntityPlayer>();
+	private static Set<UUID> tetheredPlayers = new HashSet<UUID>();
 	
 	private EntityPlayer player;
 	private Vec3d tetherPos;
@@ -44,7 +45,7 @@ public class TetherExtension {
 	
 	/** Returns self because chains are gains. **/
 	public TetherExtension tether(){
-		tetheredPlayers.add(player);
+		tetheredPlayers.add(player.getUniqueID());
 		tethers.put(player, this);
 		if (!player.world.isRemote){
 		this.body = new EntityPlayerBody(player.world, player);
@@ -81,18 +82,18 @@ public class TetherExtension {
 	
 	/** Use this to remove a player from the tethered list.**/
 	public void clearTether(){
-		tetheredPlayers.remove(player);
+		tetheredPlayers.remove(player.getUniqueID());
 		tethers.remove(player);
 		this.body = null;
 	}
 	
 	public static boolean hasTether(EntityPlayer p){
-		return tetheredPlayers.contains(p);
+		return tetheredPlayers.contains(p.getUniqueID());
 	}
 	
 	/** Used for server stopping and such. **/
 	public static void clearAllTethers(){
-		tetheredPlayers = new HashSet<EntityPlayer>();
+		tetheredPlayers = new HashSet<UUID>();
 	}
 	
 }

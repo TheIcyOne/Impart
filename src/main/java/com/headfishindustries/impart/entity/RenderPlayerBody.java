@@ -1,5 +1,6 @@
 package com.headfishindustries.impart.entity;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderBiped;
@@ -15,7 +16,6 @@ public class RenderPlayerBody extends RenderBiped<EntityPlayerBody>{
 	
 	public RenderPlayerBody(RenderManager renderManager) {
 		super(renderManager, model, NAME_TAG_RANGE);
-		
 	}
 	
 	@Override
@@ -27,9 +27,11 @@ public class RenderPlayerBody extends RenderBiped<EntityPlayerBody>{
 	@Override
 	public void doRender(EntityPlayerBody entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
+		Minecraft.getMinecraft().mcProfiler.startSection("Rendering Body");
 		GlStateManager.color(0.1f, 0.1f, 0.1f, 0.9f);
 		super.doRender(entity, x, y, z, entityYaw, partialTicks);
 		GlStateManager.color(1, 1, 1, 1);
+		Minecraft.getMinecraft().mcProfiler.endSection();
     }
 
 }

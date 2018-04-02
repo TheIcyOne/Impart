@@ -22,7 +22,7 @@ public class ProjectionEventHandler {
 	
 	@SubscribeEvent
 	public static void onPlayerTick(LivingUpdateEvent e){
-		if (e.getEntityLiving() instanceof EntityPlayerMP){
+		if (e.getEntityLiving() instanceof EntityPlayer){
 			EntityPlayer p = (EntityPlayer) e.getEntityLiving();
 			if (TetherExtension.hasTether(p)){
 				TetherExtension ex = TetherExtension.For(p);
