@@ -29,7 +29,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
-@Mod(modid = Impart.MODID, version = Impart.VERSION)
+@Mod(modid = Impart.MODID, version = Impart.VERSION, acceptedMinecraftVersions="[1.12,1.13]")
 public class Impart {
 	public static final String MODID = "impart";
 	public static final String VERSION = "%gradle.version%";
@@ -72,7 +72,7 @@ public class Impart {
 	}
 	
 	//Putting this here because otherwise java complains. I don't blame it, really.
-	@SubscribeEvent(priority = EventPriority.HIGHEST)
+//	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public static void onRenderGui(RenderHandEvent e){
 		EntityPlayer p = Minecraft.getMinecraft().player;
 		if (TetherExtension.hasTether(p)){

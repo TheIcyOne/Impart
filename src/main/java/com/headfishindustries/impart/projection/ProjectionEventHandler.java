@@ -6,6 +6,7 @@ import com.headfishindustries.impart.particle.LinkParticle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.client.event.GuiScreenEvent;
@@ -21,7 +22,7 @@ public class ProjectionEventHandler {
 	
 	@SubscribeEvent
 	public static void onPlayerTick(LivingUpdateEvent e){
-		if (e.getEntityLiving() instanceof EntityPlayer){
+		if (e.getEntityLiving() instanceof EntityPlayerMP){
 			EntityPlayer p = (EntityPlayer) e.getEntityLiving();
 			if (TetherExtension.hasTether(p)){
 				TetherExtension ex = TetherExtension.For(p);
@@ -71,7 +72,7 @@ public class ProjectionEventHandler {
 	public static void onRenderGui(RenderHandEvent e){
 		EntityPlayer p = Minecraft.getMinecraft().player;
 		if (TetherExtension.hasTether(p)){
-				GlStateManager.color(1, 1, 1, 1);
+				GlStateManager.color(1, 1, 1, 0.5f);
 		}
 	}
 	

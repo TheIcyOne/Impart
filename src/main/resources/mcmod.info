@@ -9,7 +9,7 @@
   "updateUrl": "",
   "authorList": ["The_Icy_One"],
   "credits": "Vebyast, for the original idea sparking this post.",
-  "logoFile": "",
+  "logoFile": "logo.png",
   "screenshots": [],
   "dependencies": []
 }

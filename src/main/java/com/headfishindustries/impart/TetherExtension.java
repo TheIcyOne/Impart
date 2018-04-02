@@ -46,8 +46,10 @@ public class TetherExtension {
 	public TetherExtension tether(){
 		tetheredPlayers.add(player);
 		tethers.put(player, this);
+		if (!player.world.isRemote){
 		this.body = new EntityPlayerBody(player.world, player);
 		this.body.setPlayer(player);
+		}
 		return this;
 	}
 	/** Returns self because chains are gains. **/
