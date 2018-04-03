@@ -1,11 +1,8 @@
 package com.headfishindustries.impart.entity;
 
-import com.headfishindustries.impart.Impart;
-
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 public class RenderEntityTethering extends Render<EntityTethering>{
 	

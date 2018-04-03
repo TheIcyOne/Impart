@@ -1,25 +1,18 @@
 package com.headfishindustries.impart.particle;
 
-import java.nio.ByteBuffer;
-
-import org.lwjgl.opengl.GL11;
-
 import com.headfishindustries.impart.Impart;
 import com.headfishindustries.impart.LazyMaths;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.particle.IParticleFactory;
-import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -135,7 +128,6 @@ public class LinkParticle extends Imparticle{
 	    		double dstY = LazyMaths.interpolate(targetEntity.prevPosY, startEntity.posY, partialTicks);
 	    		double dstZ = LazyMaths.interpolate(targetEntity.prevPosZ, startEntity.posZ, partialTicks);
 
-	            float f1 = 240.0F;
 	            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
 	            GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 	            float f2 = (float)this.targetEntity.world.getTotalWorldTime() + partialTicks;
@@ -152,15 +144,12 @@ public class LinkParticle extends Imparticle{
 	            float f6 = (float)Math.atan2(vec3d2.z, vec3d2.x);
 	            GlStateManager.rotate((((float)Math.PI / 2F) + -f6) * (180F / (float)Math.PI), 0.0F, 1.0F, 0.0F);
 	            GlStateManager.rotate(f5 * (180F / (float)Math.PI), 1.0F, 0.0F, 0.0F);
-	            int i = 1;
 	            double d1 = (double)f2 * 0.05D * -1.5D;
 	            bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
 	            float f7 = f * f;
 	            int j = 64 + (int)(f7 * 191.0F);
 	            int k = 32 + (int)(f7 * 191.0F);
 	            int l = 128 - (int)(f7 * 64.0F);
-	            double d2 = 0.2D;
-	            double d3 = 0.282D;
 	            double d4 = 0.0D + Math.cos(d1 + 2.356194490192345D) * 0.282D;
 	            double d5 = 0.0D + Math.sin(d1 + 2.356194490192345D) * 0.282D;
 	            double d6 = 0.0D + Math.cos(d1 + (Math.PI / 4D)) * 0.282D;
@@ -177,8 +166,6 @@ public class LinkParticle extends Imparticle{
 	            double d17 = 0.0D + Math.sin(d1 + (Math.PI / 2D)) * 0.2D;
 	            double d18 = 0.0D + Math.cos(d1 + (Math.PI * 3D / 2D)) * 0.2D;
 	            double d19 = 0.0D + Math.sin(d1 + (Math.PI * 3D / 2D)) * 0.2D;
-	            double d20 = 0.0D;
-	            double d21 = 0.4999D;
 	            double d22 = (double)(-1.0F + f3);
 	            double d23 = d0 * 2.5D + d22;
 	            bufferbuilder.pos(d12, d0, d13).tex(0.4999D, d23).color(j, k, l, 255).endVertex();

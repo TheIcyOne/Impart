@@ -3,7 +3,6 @@ package com.headfishindustries.impart.capability.ex;
 import com.headfishindustries.impart.Impart;
 import com.headfishindustries.impart.ImpartedItems;
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;

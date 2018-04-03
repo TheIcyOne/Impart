@@ -9,7 +9,6 @@ import com.headfishindustries.impart.entity.EntityPlayerBody;
 import com.headfishindustries.impart.entity.EntityTethering;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Vec3d;
 
 /** For some reason, one and only one of my capabilities caused awful lag.

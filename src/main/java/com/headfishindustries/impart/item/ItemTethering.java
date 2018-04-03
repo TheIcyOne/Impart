@@ -6,24 +6,19 @@ import com.headfishindustries.impart.TetherExtension;
 import com.headfishindustries.impart.entity.EntityPlayerBody;
 import com.headfishindustries.impart.entity.EntityTethering;
 import com.headfishindustries.impart.projection.ProjectionEvent;
+
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.SoundManager;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.sound.SoundEvent;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 public class ItemTethering extends Item{
 	
@@ -115,7 +110,7 @@ public class ItemTethering extends Item{
 				tether.setVelocity(0, 0, 0);
 				tether.velocityChanged = true;
 
-				ProjectionEvent.Transmit e = new ProjectionEvent.Transmit(player);
+				new ProjectionEvent.Transmit(player);
 				}
 			
 		 }

@@ -2,7 +2,6 @@ package com.headfishindustries.impart.capability.ex;
 
 import com.headfishindustries.impart.Impart;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
