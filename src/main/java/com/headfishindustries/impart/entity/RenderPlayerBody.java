@@ -16,6 +16,7 @@ public class RenderPlayerBody extends RenderBiped<EntityPlayerBody>{
 	
 	public RenderPlayerBody(RenderManager renderManager) {
 		super(renderManager, model, NAME_TAG_RANGE);
+		this.shadowSize = 0.5f;
 	}
 	
 	@Override
@@ -23,5 +24,7 @@ public class RenderPlayerBody extends RenderBiped<EntityPlayerBody>{
     {
 		return DEFAULT_RL;
     }
+
+
 
 }
