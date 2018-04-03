@@ -68,7 +68,7 @@ public class ProjectionEventHandler {
 		}
 	}
 	
-	@SubscribeEvent(priority = EventPriority.LOWEST)
+	//@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void onRenderGui(RenderHandEvent e){
 		EntityPlayer p = Minecraft.getMinecraft().player;
 		if (TetherExtension.hasTether(p)){

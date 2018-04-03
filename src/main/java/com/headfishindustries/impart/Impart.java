@@ -71,7 +71,7 @@ public class Impart {
 	}
 	
 	//Putting this here because otherwise java complains. I don't blame it, really.
-	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	//@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public static void onRenderGui(RenderHandEvent e){
 		EntityPlayer p = Minecraft.getMinecraft().player;
 		if (TetherExtension.hasTether(p)){
