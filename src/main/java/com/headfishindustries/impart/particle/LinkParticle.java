@@ -4,7 +4,6 @@ import com.headfishindustries.impart.Impart;
 import com.headfishindustries.impart.LazyMaths;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.particle.IParticleFactory;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -12,6 +11,7 @@ import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -118,7 +118,7 @@ public class LinkParticle extends Imparticle{
 	            GlStateManager.disableBlend();
 	            GlStateManager.depthMask(true);
 	            
-	        	EntityPlayerSP player = Minecraft.getMinecraft().player;
+	        	EntityPlayer player = Minecraft.getMinecraft().player;
 	        	
 	            double interpX = LazyMaths.interpolate(player.prevPosX, player.posX, partialTicks);
 	    		double interpY = LazyMaths.interpolate(player.prevPosY, player.posY, partialTicks);
