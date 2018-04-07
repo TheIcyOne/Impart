@@ -10,6 +10,8 @@ import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 
 public class ProjectionEventHandler {
@@ -44,6 +46,7 @@ public class ProjectionEventHandler {
 		}
 	}
 	
+	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public static void onRenderPlayer(RenderLivingEvent.Pre<EntityPlayer> e){
 		if (!(e.getEntity() instanceof EntityPlayer)) return;
@@ -53,6 +56,7 @@ public class ProjectionEventHandler {
 		}
 	}
 	
+	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public static void onRenderPlayer(RenderLivingEvent.Post<EntityPlayer> e){
 		if (!(e.getEntity() instanceof EntityPlayer)) return;
@@ -62,6 +66,7 @@ public class ProjectionEventHandler {
 		}
 	}
 	
+	@SideOnly(Side.CLIENT)
 	//@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void onRenderGui(RenderHandEvent e){
 		EntityPlayer p = Minecraft.getMinecraft().player;
@@ -69,5 +74,6 @@ public class ProjectionEventHandler {
 				GlStateManager.color(1, 1, 1, 0.5f);
 		}
 	}
+
 	
 }

@@ -21,6 +21,7 @@ public class ClientProxy extends CommonProxy {
 	
 	@Override
 	public void preInit(){
+		Minecraft.getMinecraft().mcProfiler.profilingEnabled = true;
 		registerRenderers();
 	}
 	

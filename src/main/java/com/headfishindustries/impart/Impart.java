@@ -21,6 +21,8 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod(modid = Impart.MODID, version = Impart.VERSION, acceptedMinecraftVersions="[1.12,1.13]")
 public class Impart {
@@ -36,7 +38,7 @@ public class Impart {
 	
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent e){
-		Minecraft.getMinecraft().mcProfiler.profilingEnabled = true;
+
 /*		CapabilityManager.INSTANCE.register(IProjection.class, new ProjectionStorage(), Projection.class);
 		CapabilityManager.INSTANCE.register(IHasTetherEntity.class, new TetherEntityStorage(), TetherEntity::new);
 		MinecraftForge.EVENT_BUS.register(CapPlayerHandle.class);
@@ -62,6 +64,7 @@ public class Impart {
 		proxy.registerModels();
 	}
 	
+	@SideOnly(Side.CLIENT)
 	//Putting this here because otherwise java complains. I don't blame it, really.
 	//@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public static void onRenderGui(RenderHandEvent e){
@@ -70,4 +73,5 @@ public class Impart {
 				GlStateManager.color(1, 1, 1, 0.5f);
 		}
 	}
+
 }
