@@ -63,7 +63,7 @@ public class TetherExtension {
 	}
 	
 	public double getRange(){
-		return 2.5f;
+		return 2.9f;
 	}
 	
 	public TetherExtension setPlayerPos(Vec3d in){
