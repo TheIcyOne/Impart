@@ -63,7 +63,7 @@ public class EntityTethering extends EntityThrowable{
 	@Override
     public void onUpdate(){
 		super.onUpdate();
-		new TetherParticle(world, lastTickPosX, lastTickPosX, lastTickPosX);
+//		new TetherParticle(world, lastTickPosX, lastTickPosX, lastTickPosX);
 		this.world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, true, this.posX, this.posY, this.posZ, this.motionX, this.motionY, this.motionZ, 0);
 		if (!TetherExtension.playerToEntity.containsValue(this)){
 			this.setDead();
